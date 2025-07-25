@@ -20,6 +20,36 @@ if (moon) {
     })
 }
 
+const toggleButton = document.getElementById("toggle");
+const closeButton = document.getElementById("close");
+const navList = document.getElementById("nav-list");
+const themeSelector = document.getElementById("theme-selector");
+const calculatorContainer = document.getElementById("calculator-container");
+if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+        navList.classList.add("list_show");
+        toggleButton.classList.add("hide_toggle_btn");
+        closeButton.classList.add("close_btn_show")
+        themeSelector.classList.add("themeshow")
+        calculatorContainer.classList.add("calculator__container_hiden")
+    });
+}
+if (closeButton) {
+    closeButton.addEventListener('click', () => {
+        closeEverything();
+    });
+}
+
+function closeEverything() {
+    navList.classList.remove("list_show");
+    closeButton.classList.remove("close_btn_show")
+    themeSelector.classList.remove("themeshow")
+    calculatorContainer.classList.remove("calculator__container_hiden")
+    toggleButton.classList.remove("hide_toggle_btn");
+
+
+}
+
 //===== CALCULATOR SELECTOR =====//
 
 const nav__list = document.querySelectorAll(".nav__link")
@@ -33,6 +63,7 @@ nav__list.forEach(nav__link => {
         nav__link.classList.add("visited");
         void nav__link.offsetWidth;
         nav__link.classList.add("active");
+        closeEverything();
     })
 });
 
@@ -65,7 +96,7 @@ const calculator = {
                 this.expression = this.elements.result.value;
                 this.resultShown = false;
             }
-            else if (action !== 'clear' && action !== 'backspace' && action !=='calculate') {
+            else if (action !== 'clear' && action !== 'backspace' && action !== 'calculate') {
                 this.clearDisplay();
                 this.resultShown = false;
             }
@@ -160,120 +191,3 @@ calculator.init();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const calculatorExpression = document.getElementById("calculator-expression");
-// const calculatorResult = document.getElementById("calculator-result");
-// let currentExpression = "";
-// let storedExpression = ""
-// let resultShown = false;
-
-
-// function appendToExpression(value) {
-//     currentExpression += value;
-//     calculatorExpression.value = currentExpression;
-// }
-
-// function allClearExpression() {
-//     currentExpression = "";
-//     calculatorExpression.value = currentExpression;
-//     calculatorResult.value = "";
-// }
-
-// function backspaceOnExpression() {
-//     currentExpression = currentExpression.slice(0, -1);
-//     calculatorExpression.value = currentExpression;
-// }
-
-// function getResult() {
-//     let expression = calculatorExpression.value;
-//     let result = eval(expression);
-//     calculatorResult.value = result;
-//     storedExpression = currentExpression;
-//     currentExpression = "";
-//     calculatorExpression.value = currentExpression;
-//     resultShown = true
-// }
-
-// function previousExpression() {
-//     currentExpression = storedExpression;
-//     calculatorExpression.value = currentExpression;
-//     storedExpression = ""
-//     resultShown = false
-// }
-
-// let keypadBtns = document.querySelectorAll(".keypad_btn");
-// keypadBtns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         if(resultShown == true)
-//         {
-//             resultShown = false;
-//         }
-//         appendToExpression(btn.value);
-//     })
-
-// })
-
-// const allClear = document.getElementById("all_clear");
-// if (allClear) {
-//     allClear.addEventListener('click', () => {
-//         allClearExpression();
-//     })
-// }
-
-// const backspace = document.getElementById("backspace");
-// if (backspace) {
-//     backspace.addEventListener('click', () => {
-//         if (!resultShown) {
-//             backspaceOnExpression();
-//         }
-//         else {
-//             previousExpression();
-//         }
-//     })
-// }
-
-// const equal = document.getElementById("equal");
-// if (equal) {
-//     equal.addEventListener('click', () => {
-//         if(!resultShown){
-//             getResult();
-//         }
-//         else{
-
-//         }
-//     })
-// }
