@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Calculator | Developed by Sakil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <div class="nav__logo">CalcMaster</div>
+
+            <ul class="nav__list" id="nav-list">
+                <li class="nav__item">
+                    <a href="#" class="nav__link visited active">
+                        Standard
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        Scientific
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        Age
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        BMI
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        Unit Converter
+                    </a>
+                </li>
+            </ul>
+            <div class="theme_selector">
+                <i class="ri-sun-fill unselected" id="sun"></i>
+                <i class="ri-moon-fill selected" id="moon"></i>
+            </div>
+        </header>
+        <main>
+            <section class="calculator" id="standard">
+                <h2 class="calculator_type">Standard</h2>
+                <div class="calculator__display">
+                    <input type="text" class="calculator__expression" id="calculator-expression" value="" readonly>
+                    <input type="text" class="calculator__result" id="calculator-result" value="" readonly>
+                </div>
+                <div class="standard__keypad" id="standard__keypad">
+                    <div class="row_1 row">
+                        <button class="keypad_btn" data-action="clear" data-value="AC">AC</button>
+                        <button class="keypad_btn" data-action="backspace"><i class="ri-delete-back-2-line"></i></button>
+                        <button class="keypad_btn" data-action="operator" data-value="%"><i class="ri-percent-fill"></i></button>
+                        <button class="keypad_btn" data-action="operator" data-value="/"><i class="ri-divide-fill"></i></button>
+                    </div>
+                    <div class="row_2 row">
+                        <button class="keypad_btn" data-action="number" data-value="7">7</button>
+                        <button class="keypad_btn" data-action="number" data-value="8">8</button>
+                        <button class="keypad_btn" data-action="number" data-value="9">9</button>
+                        <button class="keypad_btn" data-action="operator" data-value="*"><i class="ri-close-fill"></i></button>
+                    </div>
+                    <div class="row_3 row">
+                        <button class="keypad_btn" data-action="number" data-value="4">4</button>
+                        <button class="keypad_btn" data-action="number" data-value="5">5</button>
+                        <button class="keypad_btn" data-action="number" data-value="6">6</button>
+                        <button class="keypad_btn" data-action="operator" data-value="+"><i class="ri-add-fill"></i></button>
+                    </div>
+                    <div class="row_4 row">
+                        <button class="keypad_btn" data-action="number" data-value="1">1</button>
+                        <button class="keypad_btn" data-action="number" data-value="2">2</button>
+                        <button class="keypad_btn" data-action="number" data-value="3">3</button>
+                        <button class="keypad_btn" data-action="operator" data-value="-"><i class="ri-subtract-fill"></i></button>
+                    </div>
+                    <div class="row_5 row">
+                        <button class="keypad_btn" data-action="number" data-value="0">0</button>
+                        <button class="keypad_btn" data-action="number" data-value="00">00</button>
+                        <button class="keypad_btn" data-action="decimal" data-value=".">.</button>
+                        <button class="keypad_btn" data-action="calculate"><i class="ri-equal-fill"></i></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
