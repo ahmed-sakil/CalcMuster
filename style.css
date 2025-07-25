@@ -1,62 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
-body{
+
+body {
     font-family: "Montserrat Alternates", sans-serif;
-    background-color: 	#182c25;
+    background-color: #182c25;
 }
-ul{
+
+ul {
     list-style: none;
 }
-a{
+
+a {
     color: black;
     text-decoration: none;
 }
 
-:root{
+:root {
     --header-height: 5rem;
     --fullscreen: calc(100vh - var(--header-height));
     --button-width: 100px;
     --button-height: 75px;
 }
+
 /* NAVBAR */
-.container{
+.container {
     width: 90%;
     margin: auto;
 }
-.header{
+
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: 	#182c25;
+    background-color: #182c25;
     height: var(--header-height);
     padding: 0 2rem;
     position: sticky;
     top: 0;
 }
 
-.nav__logo{
+.nav__logo {
     font-size: 3rem;
     font-weight: 600;
     color: aliceblue;
     cursor: pointer;
 }
 
-.nav__list{
+.nav__list {
     display: flex;
     column-gap: 2rem;
     align-items: center;
     margin-right: 4rem;
 }
 
-.nav__link{
+.nav__link {
     font-size: 1rem;
     font-weight: 500;
     opacity: .8;
@@ -64,22 +70,24 @@ a{
     display: inline-block;
     transition: opacity 1s;
 }
-.nav__link:hover{
+
+.nav__link:hover {
     opacity: 1;
 }
-.nav__item{
+
+.nav__item {
     position: relative;
 }
 
-.nav__list:has(.nav__link:hover) .nav__link:not(:hover)
-{
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
     opacity: .4;
 }
 
-.visited{
+.visited {
     opacity: 1;
 }
-.visited::after{
+
+.visited::after {
     content: "";
     border: 1px solid;
     position: absolute;
@@ -90,11 +98,12 @@ a{
     background-color: aliceblue;
     transition: width .5s ease;
 }
-.visited.active::after{
+
+.visited.active::after {
     width: 100%;
 }
 
-.theme_selector{
+.theme_selector {
 
     position: absolute;
     display: flex;
@@ -102,9 +111,10 @@ a{
     justify-content: center;
     right: 0;
     height: 100%;
-    
+
 }
-.theme_selector i{
+
+.theme_selector i {
     font-size: 1.5rem;
     padding: .3rem;
     position: absolute;
@@ -113,44 +123,54 @@ a{
     transition: opacity .5s ease-in-out;
 }
 
-.selected{
+.selected {
     opacity: 1;
     z-index: 1;
 }
-.unselected{
+
+.unselected {
     opacity: 0;
     z-index: -1;
 }
 
-main{
+main {
     width: 100%;
 }
 
-.basic{
+.basic {
     width: 100%;
     height: var(--fullscreen);
 }
 
 
 /*============ STANDARD ============*/
-.calculator{
-    border: 2px solid;
+.calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.calculator_type{
+
+.calculator__container {
+    border: 2px solid #455b55;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 500px;
+}
+
+.calculator_type {
     color: aliceblue;
     align-self: flex-start;
     font-size: 2rem;
-    padding: 1rem;
+    padding: 1rem 2.2rem;
 }
-.calculator__display{
+
+.calculator__display {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 100%;
 }
-.calculator__display input{
+
+.calculator__display input {
     width: 100%;
     padding: 1rem .5rem;
     border: none;
@@ -158,41 +178,40 @@ main{
     font-family: "Montserrat Alternates", sans-serif;
     font-weight: 600;
 }
-.calculator__expression{
-    border-radius: 1rem 1rem 0 0;
-    border: 2px solid #455b55 !important;
-    border-bottom: none !important;
+
+.calculator__expression {
     width: 100%;
     overflow-x: scroll;
     white-space: nowrap;
     direction: ltr;
     text-align: right;
     scrollbar-width: none;
+    border: none;
 }
-.calculator__result{
+
+.calculator__result {
     text-align: end;
-    border: 2px solid #455b55 !important;
-    border-bottom: none !important;
-    border-top: none !important;
+    border: none;
 }
-.standard__keypad{
+
+.standard__keypad {
     display: flex;
     flex-direction: column;
     column-gap: 1rem;
     row-gap: 1rem;
-    width: 500px;
+    width: 100%;
     padding: 1rem 0;
-    border: 2px solid #455b55;
     padding: 1rem;
     border-top: none;
-    border-radius: 0 0 1rem 1rem;
 }
-.row{
+
+.row {
     display: flex;
     column-gap: 2rem;
     justify-content: space-between;
 }
-.keypad_btn{
+
+.keypad_btn {
     color: aliceblue;
     border: 2px solid #455b55;
     border-radius: 10px;
@@ -207,4 +226,115 @@ main{
     background-color: #455b55;
     cursor: pointer;
 }
+.toggle_close {
+        position: absolute;
+        opacity: 0;
+        z-index: -11;
+    }
 
+@media screen and (max-width: 1150px) {
+    :root {
+        --button-width: 60px;
+        --button-height: 50px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        padding: .2rem;
+        background-color: #455b55;
+    }
+
+    .nav__logo {
+        font-size: 2rem;
+        padding: .2rem;
+    }
+
+    .nav__list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4rem 1rem;
+        row-gap: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100vw;
+        height: 100vh;
+        background-color: #455b55;
+        opacity: 0;
+        z-index: -11;
+        transition: opacity 1s;
+    }
+
+    .theme_selector {
+        opacity: 0;
+        top: 20rem;
+        left: -19rem;
+        z-index: -11;
+        transition: opacity .5s;
+    }
+    .themeshow{
+        opacity: 1;
+        z-index: 11;
+    }
+
+    .toggle_close {
+        position: absolute;
+        right: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: aliceblue;
+        cursor: pointer;
+        opacity: 1;
+        z-index: 11;
+        transition: opacity .5s ease-in-out;
+    }
+    .list_show{
+        opacity: 1;
+        z-index: 10;
+    }
+    .toggle_close i{
+        position: absolute;
+        padding: .2rem;
+        font-size: 2rem;
+    }
+    .close{
+        opacity: 0;
+        z-index: -1;
+    }
+    .close_btn_show{
+        opacity: 1;
+        z-index: 11;
+        transition: opacity .5s;
+    }
+
+    .hide_toggle_btn{
+        z-index: -1;
+    }
+    
+    .calculator_type {
+        padding: .2rem 0 2rem .2rem;
+        font-size: 1.3rem;
+    }
+
+    .calculator__container {
+        width: 97%;
+        margin: auto;
+        max-width: 500px;
+        z-index: 0;
+    }
+    .calculator__container_hiden{
+        z-index: -1;
+    }
+    .calculator_type{
+        padding: 2rem 0.2rem;
+    }
+
+    .row {
+        column-gap: .2rem;
+    }
+}
