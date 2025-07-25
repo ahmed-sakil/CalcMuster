@@ -39,39 +39,39 @@ nav__list.forEach(nav__link => {
 
 //===== STANDARD CALCULATOR =====//
 const calculator = {
-    hello(){
+    hello() {
         console.log("hi");
     },
     expression: '',
     storeExpression: '',
     resultShown: false,
 
-    elements:{
+    elements: {
         expression: document.getElementById("calculator-expression"),
         result: document.getElementById("calculator-result"),
         keypad: document.getElementById("standard__keypad")
     },
 
-    init(){
+    init() {
         this.setupEventListener();
     },
 
-    handleButtonClick(button){
+    handleButtonClick(button) {
         const action = button.dataset.action;
         const value = button.dataset.value;
 
-        if(this.resultShown){
-            if(action === 'operator'){
+        if (this.resultShown) {
+            if (action === 'operator') {
                 this.expression = this.elements.result.value;
                 this.resultShown = false;
             }
-            else if(action !== 'clear' && action !== 'backspace'){
+            else if (action !== 'clear' && action !== 'backspace' && action !=='calculate') {
                 this.clearDisplay();
                 this.resultShown = false;
             }
         }
 
-        switch(action){
+        switch (action) {
             case 'number':
             case 'decimal':
             case 'operator':
@@ -90,14 +90,14 @@ const calculator = {
 
     },
 
-    appendToExpression(value){
-        if(value === '.' && /\.\d*$/.test(this.expression)){
+    appendToExpression(value) {
+        if (value === '.' && /\.\d*$/.test(this.expression)) {
             return;
         }
 
-        if(['+','-','*','/','%'].includes(value)){
+        if (['+', '-', '*', '/', '%'].includes(value)) {
             const lastChar = this.expression.slice(-1);
-            if(['+','-','*','/','%'].includes(lastChar)){
+            if (['+', '-', '*', '/', '%'].includes(lastChar)) {
                 this.expression = this.expression.slice(0, -1);
             }
         }
@@ -105,27 +105,33 @@ const calculator = {
         this.updateDisplay();
     },
 
-    clearDisplay(){
+    clearDisplay() {
         this.expression = '';
         this.elements.result.value = '';
         this.updateDisplay();
     },
 
-    updateDisplay(){
+    updateDisplay() {
         this.elements.expression.value = this.expression;
         this.elements.expression.scrollLeft = this.elements.expression.scrollWidth;
     },
 
-    backspace(){
+    backspace() {
         this.expression = this.expression.slice(0, -1);
         this.updateDisplay();
     },
 
-    calculateResult(){
+    calculateResult() {
+
         let expr = this.expression;
-        try{
-            if(expr === '' || /[\+\-\*\/%]$/.test(expr)){
-                this.elements.result.value = "ERROR";
+        if (expr === '' && this.resultShown) {
+            expr = this.storeExpression;
+            this.expression = expr;
+        }
+
+        try {
+            if (expr === '' || /[\+\-\*\/%]$/.test(expr)) {
+                this.elements.result.value = "GUD";
                 return;
             }
             const result = new Function(`return ${expr}`)();
@@ -134,15 +140,15 @@ const calculator = {
             this.elements.result.value = result;
             this.expression = '';
             this.resultShown = true;
-        } catch(error){
+        } catch (error) {
             this.elements.result.value = 'ERROR';
         }
     },
 
-    setupEventListener(){
-        this.elements.keypad.addEventListener('click', (e)=>{
-            const button  = e.target.closest(".keypad_btn");
-            if(button){
+    setupEventListener() {
+        this.elements.keypad.addEventListener('click', (e) => {
+            const button = e.target.closest(".keypad_btn");
+            if (button) {
                 this.handleButtonClick(button);
             }
         });
