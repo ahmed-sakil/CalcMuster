@@ -162,7 +162,7 @@ const calculator = {
 
         try {
             if (expr === '' || /[\+\-\*\/%]$/.test(expr)) {
-                this.elements.result.value = "GUD";
+                this.elements.result.value = "ERROR";
                 return;
             }
             const result = new Function(`return ${expr}`)();
